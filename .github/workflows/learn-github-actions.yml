@@ -17,6 +17,7 @@ jobs:
       - shell: bash
         run:
           expr 1 + 1 > output.log
+        run:
           cat readme >> output.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
