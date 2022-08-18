@@ -1,3 +1,28 @@
+name: c/c++ CI
+
+on:
+  push:
+      branches: [ main ]
+  pull_request:
+                [ main ]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install cppunit
+      run: sudo apt install -y libcppunit-dev
+      - name: configure
+      run: ./configure
+      - name: make
+      run: make
+      - name: make test
+      run: make test
+
+
+
+
+
 name: learn-github-actions
 on: [push]
 jobs:
@@ -21,3 +46,6 @@ jobs:
         with:
           name: output-log-file
           path: output.log
+
+
+
