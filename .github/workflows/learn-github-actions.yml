@@ -1,14 +1,15 @@
-name: c/c++ CI
+name: C/C++ CI
 
 on:
   push:
       branches: [ main ]
   pull_request:
-                [ main ]
+      branches: [ main ]
+
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
-    steps:
+      runs-on: ubuntu-latest
+      steps:
       - uses: actions/checkout@v2
       - name: install cppunit
       run: sudo apt install -y libcppunit-dev
@@ -18,34 +19,3 @@ jobs:
       run: make
       - name: make test
       run: make test
-
-
-
-
-
-name: learn-github-actions
-on: [push]
-jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-  create_output_file:
-    runs-on: ubuntu-latest
-    name: save output
-    steps:
-      - shell: bash
-        run: find /. > output.log
-      - name: Upload output file
-        uses: actions/upload-artifact@v3
-        with:
-          name: output-log-file
-          path: output.log
-
-
-
