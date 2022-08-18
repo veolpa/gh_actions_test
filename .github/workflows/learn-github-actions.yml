@@ -10,8 +10,8 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-
   create_output_file:
+    runs-on: ubuntu-latest
     name: save output
     steps:
       - shell: bash
