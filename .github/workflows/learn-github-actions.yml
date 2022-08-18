@@ -15,7 +15,7 @@ jobs:
     name: save output
     steps:
       - shell: bash
-        run: find . >> output.log
+        run: find . > output.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
