@@ -9,15 +9,16 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@main
+    - name: some_checks_upfront
+      run: ls -l
     - name: install_essentials
       run: sudo apt install build-essential
     - name: configure
-      run: sudo configure
+      run: chmod -x configure & ./configure
     - name: make
       run: make
     - name: make check
