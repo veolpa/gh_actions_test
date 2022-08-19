@@ -4,5 +4,3 @@ all:
 test:
 	chmod +x hello
 	./helloTest
-clean:
-	$(RM) hello helloTest
