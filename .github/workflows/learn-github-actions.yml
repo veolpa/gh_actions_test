@@ -14,7 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - name: install_essentials
-      run: sudo apt install build-essential
+      run: sudo apt install -y build-essential
+    - name: install_testsuite
+      run: sudo apt install -y libcppunit-dev
     - name: configure_x
       run: sudo chmod +x ./configure 
     - name: some_checks_upfront
