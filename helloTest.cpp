@@ -8,33 +8,37 @@
 
 class Test : public CPPUNIT_NS::TestCase
 {
-    CPPUNIT_TEST_SUITE(Test);
-    CPPUNIT_TEST(testHelloWorld);
-    CPPUNIT_TEST_SUITE_END();
+  CPPUNIT_TEST_SUITE(Test);
+  CPPUNIT_TEST(testHelloWorld);
+  CPPUNIT_TEST_SUITE_END();
 
-    public:
-        void setUp(void) {}
-        void tearDown(void) {}
-    protected:
-        void testHelloWorld(void)  {
-            system("./hello >nul 2>nul");
-        }
+public:
+  void setUp(void) {}
+  void tearDown(void) {}
+
+protected:
+  void testHelloWorld(void) {
+    system("./hello >nul 2>nul");
+  }
 };
 
-CPPUNIT_TEST_REGISTRATION(Test);
 
-int main () {
-    CPPUNIT_NS::TestResult controller;
+CPPUNIT_TEST_SUITE_REGISTRATION(Test);
 
-    CPPUNIT_NS::TestResultCollector result;
-    controller.addListener(&result);
+int main()
 
-    CPPUNIT_NS::BriefTestProgressListener progress;
-    controller.addListener(&progress);
+{
+  CPPUNIT_NS::TestResult controller;
 
-    CPPUNIT_NS::TestRunner runner;
-    runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
-    runner.run(controller);
-    
-    return result.wasSuccessful() ? 0 : 1;
+  CPPUNIT_NS::TestResultCollector result;
+  controller.addListener(&result);
+
+  CPPUNIT_NS::BriefTestProgressListener progress;
+  controller.addListener(&progress);
+
+  CPPUNIT_NS::TestRunner runner;
+  runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
+  runner.run(controller);
+
+  return result.wasSuccessful() ? 0 : 1;
 }
