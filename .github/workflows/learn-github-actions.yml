@@ -13,12 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@main
-    - name: some_checks_upfront
-      run: ls -l
     - name: install_essentials
       run: sudo apt install build-essential
     - name: configure_x
       run: sudo chmod -x ./configure 
+    - name: some_checks_upfront
+      run: ls -l & whoami
     - name: configure
       run: sudo ./configure
     - name: make
