@@ -18,9 +18,9 @@ jobs:
     - name: install_essentials
       run: sudo apt install build-essential
     - name: configure_x
-      run: chmod -x ./configure 
+      run: sudo chmod -x ./configure 
     - name: configure
-      run: ./configure
+      run: sudo ./configure
     - name: make
       run: make
     - name: make check
